@@ -29,7 +29,9 @@ export default function BenchMarkForm() {
             backgroundColor: "#45b178",
           }}
         >
-          <MediumText fontColor="#ffffff">저장</MediumText>
+          <MediumText fontColor="#ffffff" fontWeight={600}>
+            저장
+          </MediumText>
         </Button>
       </Flex>
     </>
