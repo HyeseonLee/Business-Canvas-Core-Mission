@@ -15,7 +15,7 @@ export default function BenchMarkData() {
           backgroundColor: "#f0f0f0",
         }}
       >
-        <DeleteButton />
+        <DeleteButton onClick={() => alert("삭제 버튼 눌렀지요")} />
         <MediumText fontWeight={600}>벤치마크 데이터</MediumText>
         <Input.TextArea rows={2} />
       </div>

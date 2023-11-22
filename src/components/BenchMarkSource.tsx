@@ -16,7 +16,7 @@ export default function BenchMarkSource() {
           position: "relative",
         }}
       >
-        <DeleteButton />
+        <DeleteButton onClick={() => alert("삭제 버튼을 눌렀찌요")} />
 
         <LabeledInput
           label="제목:"
