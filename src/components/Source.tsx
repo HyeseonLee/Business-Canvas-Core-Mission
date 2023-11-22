@@ -2,6 +2,7 @@ import { Button, Card, Flex, Input } from "antd";
 import { InputLabelText, MediumText } from "./styled/Text";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import Data from "./Data";
+import DeleteButton from "./styled/DeleteButton";
 export default function Source() {
   return (
     <>
@@ -14,7 +15,7 @@ export default function Source() {
           position: "relative",
         }}
       >
-        <Button
+        {/* <Button
           type="primary"
           size="small"
           icon={<MinusOutlined />}
@@ -28,7 +29,8 @@ export default function Source() {
           <MediumText fontColor="#ffffff" fontWeight={600}>
             삭제
           </MediumText>
-        </Button>
+        </Button> */}
+        <DeleteButton />
 
         <Flex justify="flex-start" align="center">
           <InputLabelText>제목:</InputLabelText>
