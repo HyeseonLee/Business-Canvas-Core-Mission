@@ -20,3 +20,13 @@ export const MediumText = styled(Typography.Text)<Props>`
   font-weight: ${(props) => (props ? props.fontWeight : 400)};
   line-height: 20px;
 `;
+
+export const InputLabelText = styled(Typography.Text)`
+  font-family: "Pretendard";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  margin-right: 10px;
+  flex-shrink: 0;
+`;
