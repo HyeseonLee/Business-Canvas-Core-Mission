@@ -1,39 +1,27 @@
-import React, { useState } from "react";
-import { Flex, Input, Button } from "antd";
-import { LargeText, InputLabelText, MediumText } from "./styled/Text";
-import Source from "./Source";
+import { LargeText } from "./styled/Text";
+import BenchMarkSource from "./BenchMarkSource";
+import LabeledInput from "./styled/LabeledInput";
+import SaveButton from "./styled/SaveButton";
 
 export default function BenchMarkForm() {
   return (
     <>
       <div>
         <LargeText>Benchmark</LargeText>
-        <Flex justify="flex-start" align="center">
-          <InputLabelText>제목:</InputLabelText>
-          <Input />
-        </Flex>
-        <Flex justify="flex-start" align="center">
-          <InputLabelText>용어 설명:</InputLabelText>
-          <Input />
-        </Flex>
+
+        <LabeledInput
+          label="제목:"
+          value="value"
+          onChange={() => alert("onchange")}
+        />
+
+        <LabeledInput label="용어 설명:" value="용" onChange={() => 1} />
       </div>
 
       <hr />
-      {/* 벤치마크 출처 */}
-      <Source />
+      <BenchMarkSource />
 
-      <Flex justify="flex-end">
-        <Button
-          type="primary"
-          style={{
-            backgroundColor: "#45b178",
-          }}
-        >
-          <MediumText fontColor="#ffffff" fontWeight={600}>
-            저장
-          </MediumText>
-        </Button>
-      </Flex>
+      <SaveButton onClick={() => alert("저장")} />
     </>
   );
 }

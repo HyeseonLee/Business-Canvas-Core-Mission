@@ -3,7 +3,7 @@ import DeleteButton from "./styled/DeleteButton";
 import { MediumText } from "./styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
 
-export default function Data() {
+export default function BenchMarkData() {
   return (
     <>
       <div
@@ -20,7 +20,10 @@ export default function Data() {
         <Input.TextArea rows={2} />
       </div>
 
-      <Button icon={<PlusOutlined />}>
+      <Button
+        icon={<PlusOutlined />}
+        onClick={() => alert("벤치마크 데이터 추가하기")}
+      >
         <MediumText fontWeight={600}>벤치마크 데이터 추가하기</MediumText>
       </Button>
     </>
