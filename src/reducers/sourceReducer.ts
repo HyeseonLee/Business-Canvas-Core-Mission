@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { Source } from "../types/benchmark";
 
-type SourcesAction =
+export type SourcesAction =
   | { type: "ADD_SOURCE" }
   | { type: "DELETE_SOURCE"; id: string }
   | { type: "CHANGE_SOURCE"; id: string; key: string; value: string }
@@ -11,8 +11,7 @@ type SourcesAction =
       type: "CHANGE_DATA";
       sourceId: string;
       dataId: string;
-      key: string;
-      value: string;
+      content: string;
     };
 
 export default function sourceReducer(
@@ -75,7 +74,7 @@ export default function sourceReducer(
               ...source,
               dataArr: source.dataArr.map((data) =>
                 data.id === action.dataId
-                  ? { ...data, content: action.value }
+                  ? { ...data, content: action.content }
                   : data
               ),
             }
