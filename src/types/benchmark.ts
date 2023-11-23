@@ -1,8 +1,13 @@
+export type BenchMarkDefaultInfo = {
+  title: string;
+  description: string;
+};
+
 export type Source = {
   id: string;
   title: string;
   url: string;
-  data: Data[];
+  dataArr: Data[];
 };
 
 export type Data = {

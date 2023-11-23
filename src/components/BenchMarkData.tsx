@@ -2,8 +2,23 @@ import { Button, Input } from "antd";
 import DeleteButton from "./styled/DeleteButton";
 import { MediumText } from "./styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
-
-export default function BenchMarkData() {
+import { Data, Source } from "../types/benchmark";
+type BenchMarkDataProps = {
+  sourceId: string;
+  data: Data;
+  handleChangeDataContent: (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+    sourceId: string,
+    dataId: string
+  ) => void;
+  handleDeleteData: (sourceId: string, dataId: string) => void;
+};
+const BenchMarkData: React.FC<BenchMarkDataProps> = ({
+  sourceId,
+  data,
+  handleChangeDataContent,
+  handleDeleteData,
+}) => {
   return (
     <>
       <div
@@ -16,19 +31,19 @@ export default function BenchMarkData() {
         }}
       >
         <DeleteButton
-          targetStateId="sample"
-          onClick={() => alert("삭제 버튼 눌렀지요")}
+          targetSourceId={sourceId}
+          targetDataId={data.id}
+          deleteData={handleDeleteData}
         />
-        <MediumText fontWeight={600}>벤치마크 데이터</MediumText>
-        <Input.TextArea rows={2} />
+        <MediumText fontWeight={600}>벤치마크 데이터 {data.id}</MediumText>
+        <Input.TextArea
+          rows={2}
+          value={data.content}
+          onChange={(e) => handleChangeDataContent(e, sourceId, data.id)}
+        />
       </div>
-
-      <Button
-        icon={<PlusOutlined />}
-        onClick={() => alert("벤치마크 데이터 추가하기")}
-      >
-        <MediumText fontWeight={600}>벤치마크 데이터 추가하기</MediumText>
-      </Button>
     </>
   );
-}
+};
+
+export default BenchMarkData;

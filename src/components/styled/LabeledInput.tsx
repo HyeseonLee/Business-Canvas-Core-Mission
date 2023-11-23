@@ -19,13 +19,17 @@ const LabeledInput = ({
 }: Props): JSX.Element => {
   return (
     <Flex justify="flex-start" align="center" style={{ marginBottom: "10px" }}>
-      <InputLabelText>{label}</InputLabelText>
+      <InputLabelText>{label}:</InputLabelText>
       <Input
+        name={label}
         value={value}
+        // onChange={(e) => onChange && onChange(e)}
         onChange={(e) => {
           if (onChangeWithId && targetStateId) {
+            console.log("withID Version");
             onChangeWithId(e, targetStateId);
           } else if (onChange) {
+            console.log("그냥 Change 버전");
             onChange(e);
           }
         }}
