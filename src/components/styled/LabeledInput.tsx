@@ -1,49 +1,42 @@
 import { Flex, Input } from "antd";
 import { InputLabelText } from "./Text";
+import { useSourceDispatchContext } from "../../context/SourceContext";
 
 type Props = {
   label: string;
+  name?: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeee?: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: string,
-    key: string,
-    value: string
-  ) => void;
-  sourceId?: string;
-  dataId?: string;
-
-  onChangeWithId?: (e: React.ChangeEvent<HTMLInputElement>, id: string) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputSize?: string;
+  sourceId?: string;
 };
 const LabeledInput = ({
   label,
+  name,
   value,
   onChange,
   inputSize,
-
   sourceId,
-  dataId,
-  onChangeWithId,
 }: Props): JSX.Element => {
+  const dispatch = useSourceDispatchContext();
   return (
     <Flex justify="flex-start" align="center" style={{ marginBottom: "10px" }}>
       <InputLabelText>{label}:</InputLabelText>
       <Input
-        name={label}
+        name={name}
         value={value}
-        onChange={(e) => onChange(e)}
-        // onChange={(e) => onChange && onChange(e)}
-        /*        onChange={(e) => {
-          if (onChangeWithId && sourceId) {
-            console.log("withID Version");
-            onChangeWithId(e, sourceId);
+        onChange={(e) => {
+          if (sourceId) {
+            dispatch({
+              type: "CHANGE_SOURCE",
+              id: sourceId,
+              name: e.target.name,
+              value: e.target.value,
+            });
           } else if (onChange) {
-            console.log("그냥 Change 버전");
-            onChange(e, sourceId, label, e.target.value);
+            onChange(e);
           }
-        }}*/
+        }}
         style={{
           whiteSpace: "nowrap",
           overflow: "hidden",

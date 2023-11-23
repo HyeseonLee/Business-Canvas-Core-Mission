@@ -1,41 +1,18 @@
 import { Source } from "../types/benchmark";
 import DeleteButton from "./styled/DeleteButton";
 import LabeledInput from "./styled/LabeledInput";
-import BenchMarkData from "./BenchMarkData";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { MediumText } from "./styled/Text";
-
+import { useSourceDispatchContext } from "../context/SourceContext";
+import BenchMarkData from "./BenchMarkData";
 type SourceItemProps = {
   source: Source;
-  setSource: React.Dispatch<React.SetStateAction<Source[]>>;
-  handleChangeSourceTitle: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: string
-  ) => void;
-  handleChangeSourceURL: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: string
-  ) => void;
-  handleDeleteSource: (id: string) => void;
-  handleChangeDataContent: (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-    sourceId: string,
-    dataId: string
-  ) => void;
-  handleAddData: (sourceId: string) => void;
-  handleDeleteData: (sourceId: string, dataId: string) => void;
 };
 
-const SourceItem: React.FC<SourceItemProps> = ({
-  source,
-  handleChangeSourceTitle,
-  handleChangeSourceURL,
-  handleDeleteSource,
-  handleChangeDataContent,
-  handleAddData,
-  handleDeleteData,
-}) => {
+const SourceItem: React.FC<SourceItemProps> = ({ source }) => {
+  const dispatch = useSourceDispatchContext();
+
   return (
     <div
       key={source.id}
@@ -46,36 +23,37 @@ const SourceItem: React.FC<SourceItemProps> = ({
         position: "relative",
       }}
     >
-      <DeleteButton
-        targetSourceId={source.id}
-        deleteSource={handleDeleteSource}
-      />
+      <DeleteButton sourceId={source.id} target="source" />
 
       <LabeledInput
-        targetStateId={source.id}
-        label={source.id}
+        label={source.id} // 제목
+        name="title"
         value={source.title}
-        onChangeWithId={handleChangeSourceTitle}
         inputSize="60%"
+        sourceId={source.id}
       />
       <LabeledInput
-        targetStateId={source.id}
-        label="URL:"
+        label="URL"
+        name="url"
         value={source.url}
-        onChangeWithId={handleChangeSourceURL}
         inputSize="60%"
+        sourceId={source.id}
       />
+
       {/* 벤치마크 데이터 */}
       {source &&
         source.dataArr.map((data) => (
-          <BenchMarkData
-            sourceId={source.id}
-            data={data}
-            handleChangeDataContent={handleChangeDataContent}
-            handleDeleteData={handleDeleteData}
-          />
+          <BenchMarkData key={data.id} sourceId={source.id} data={data} />
         ))}
-      <Button icon={<PlusOutlined />} onClick={() => handleAddData(source.id)}>
+      <Button
+        icon={<PlusOutlined />}
+        onClick={() =>
+          dispatch({
+            type: "ADD_DATA",
+            sourceId: source.id,
+          })
+        }
+      >
         <MediumText fontWeight={600}>벤치마크 데이터 추가하기</MediumText>
       </Button>
     </div>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 type Props = {
   fontWeight?: number;
-  fontColor?: string;
+  color?: string;
 };
 
 export const LargeText = styled(Typography.Text)`
@@ -20,7 +20,7 @@ export const MediumText = styled(Typography.Text)<Props>`
   font-style: normal;
   font-weight: ${(props) => (props ? props.fontWeight : 400)};
   line-height: 20px;
-  color: ${(props) => (props.fontColor ? props.fontColor : "#000000")};
+  color: ${(props) => (props.color ? props.color : "#000000")};
 `;
 
 export const InputLabelText = styled(Typography.Text)`

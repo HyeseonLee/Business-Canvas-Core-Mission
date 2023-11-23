@@ -14,7 +14,7 @@ const SaveButton = ({ onClick }: Props): JSX.Element => {
         }}
         onClick={onClick}
       >
-        <MediumText fontColor="#ffffff" fontWeight={600}>
+        <MediumText color="#ffffff" fontWeight={600}>
           저장
         </MediumText>
       </Button>

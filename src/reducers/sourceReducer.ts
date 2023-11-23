@@ -4,7 +4,7 @@ import { Source } from "../types/benchmark";
 export type SourcesAction =
   | { type: "ADD_SOURCE" }
   | { type: "DELETE_SOURCE"; id: string }
-  | { type: "CHANGE_SOURCE"; id: string; key: string; value: string }
+  | { type: "CHANGE_SOURCE"; id: string; name: string; value: string }
   | { type: "ADD_DATA"; sourceId: string }
   | { type: "DELETE_DATA"; sourceId: string; dataId: string }
   | {
@@ -41,7 +41,7 @@ export default function sourceReducer(
     case "CHANGE_SOURCE": {
       return sources.map((source) =>
         source.id === action.id
-          ? { ...source, [action.key]: action.value }
+          ? { ...source, [action.name]: action.value }
           : source
       );
     }

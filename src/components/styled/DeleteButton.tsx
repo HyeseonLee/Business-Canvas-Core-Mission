@@ -1,19 +1,16 @@
 import { MinusOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider } from "antd";
 import { MediumText } from "./Text";
+import { useSourceDispatchContext } from "../../context/SourceContext";
 
 type Props = {
-  targetSourceId: string;
-  targetDataId?: string;
-  deleteSource?: (sourceId: string) => void;
-  deleteData?: (sourceId: string, dataId: string) => void;
+  target: string;
+  sourceId: string;
+  dataId?: string;
 };
-const DeleteButton = ({
-  targetSourceId,
-  targetDataId,
-  deleteSource,
-  deleteData,
-}: Props): JSX.Element => {
+const DeleteButton = ({ target, sourceId, dataId }: Props): JSX.Element => {
+  const dispatch = useSourceDispatchContext();
+
   return (
     <ConfigProvider
       theme={{
@@ -34,14 +31,23 @@ const DeleteButton = ({
           right: 10,
         }}
         onClick={() => {
-          if (deleteData && targetSourceId && targetDataId) {
-            deleteData(targetSourceId, targetDataId);
-          } else if (deleteSource && targetSourceId) {
-            deleteSource(targetSourceId);
+          if (target === "source") {
+            dispatch({
+              type: "DELETE_SOURCE",
+              id: sourceId,
+            });
+          }
+          if (dataId && target === "data") {
+            dispatch({
+              type: "DELETE_DATA",
+              sourceId,
+              dataId,
+            });
+          } else if (sourceId && dataId) {
           }
         }}
       >
-        <MediumText fontColor="#ffffff" fontWeight={600}>
+        <MediumText color="#ffffff" fontWeight={600}>
           삭제
         </MediumText>
       </Button>

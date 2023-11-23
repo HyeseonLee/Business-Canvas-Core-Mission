@@ -1,24 +1,14 @@
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import DeleteButton from "./styled/DeleteButton";
 import { MediumText } from "./styled/Text";
-import { PlusOutlined } from "@ant-design/icons";
-import { Data, Source } from "../types/benchmark";
+import { Data } from "../types/benchmark";
+import { useSourceDispatchContext } from "../context/SourceContext";
 type BenchMarkDataProps = {
   sourceId: string;
   data: Data;
-  handleChangeDataContent: (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-    sourceId: string,
-    dataId: string
-  ) => void;
-  handleDeleteData: (sourceId: string, dataId: string) => void;
 };
-const BenchMarkData: React.FC<BenchMarkDataProps> = ({
-  sourceId,
-  data,
-  handleChangeDataContent,
-  handleDeleteData,
-}) => {
+const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
+  const dispatch = useSourceDispatchContext();
   return (
     <>
       <div
@@ -30,16 +20,21 @@ const BenchMarkData: React.FC<BenchMarkDataProps> = ({
           backgroundColor: "#f0f0f0",
         }}
       >
-        <DeleteButton
-          targetSourceId={sourceId}
-          targetDataId={data.id}
-          deleteData={handleDeleteData}
-        />
+        <DeleteButton target="data" sourceId={sourceId} dataId={data.id} />
+
         <MediumText fontWeight={600}>벤치마크 데이터 {data.id}</MediumText>
+
         <Input.TextArea
           rows={2}
           value={data.content}
-          onChange={(e) => handleChangeDataContent(e, sourceId, data.id)}
+          onChange={(e) =>
+            dispatch({
+              type: "CHANGE_DATA",
+              sourceId,
+              dataId: data.id,
+              content: e.target.value,
+            })
+          }
         />
       </div>
     </>
