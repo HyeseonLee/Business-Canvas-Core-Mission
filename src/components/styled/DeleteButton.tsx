@@ -3,9 +3,10 @@ import { Button, ConfigProvider } from "antd";
 import { MediumText } from "./Text";
 
 type Props = {
-  onClick: () => void;
+  targetStateId: string;
+  onClick: (id: string) => void;
 };
-const DeleteButton = ({ onClick }: Props): JSX.Element => {
+const DeleteButton = ({ targetStateId, onClick }: Props): JSX.Element => {
   return (
     <ConfigProvider
       theme={{
@@ -25,7 +26,7 @@ const DeleteButton = ({ onClick }: Props): JSX.Element => {
           top: 10,
           right: 10,
         }}
-        onClick={onClick}
+        onClick={() => onClick(targetStateId)}
       >
         <MediumText fontColor="#ffffff" fontWeight={600}>
           삭제
