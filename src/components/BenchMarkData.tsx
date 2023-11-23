@@ -22,7 +22,7 @@ const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
       >
         <DeleteButton target="data" sourceId={sourceId} dataId={data.id} />
 
-        <MediumText fontWeight={600}>벤치마크 데이터 {data.id}</MediumText>
+        <MediumText fontWeight={600}>벤치마크 데이터</MediumText>
 
         <Input.TextArea
           rows={2}

@@ -26,7 +26,7 @@ const SourceItem: React.FC<SourceItemProps> = ({ source }) => {
       <DeleteButton sourceId={source.id} target="source" />
 
       <LabeledInput
-        label={source.id} // 제목
+        label="제목"
         name="title"
         value={source.title}
         inputSize="60%"
