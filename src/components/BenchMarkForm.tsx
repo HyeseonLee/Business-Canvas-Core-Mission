@@ -1,9 +1,43 @@
+import { useState } from "react";
 import { LargeText } from "./styled/Text";
 import BenchMarkSource from "./BenchMarkSource";
 import LabeledInput from "./styled/LabeledInput";
 import SaveButton from "./styled/SaveButton";
 
-export default function BenchMarkForm() {
+type BenchMarkDefaultInfo = {
+  title: string;
+  description: string;
+};
+
+const BenchMarkForm: React.FC = () => {
+  const [defaultInfo, setDefaultInfo] = useState<BenchMarkDefaultInfo>({
+    title: "",
+    description: "",
+  });
+
+  function handleChangeDefaultInfoTitle(
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setDefaultInfo({
+      ...defaultInfo,
+      title: e.target.value,
+    });
+  }
+
+  function handleChangeDefaultInfoDescribe(
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setDefaultInfo({
+      ...defaultInfo,
+      description: e.target.value,
+    });
+  }
+
+  function saveBenchMarkToLocalStorage() {
+    console.log("🪄 로컬 스토리지에 벤치마크 default Info를 저장합니다.");
+    localStorage.setItem("benchMark", JSON.stringify(defaultInfo));
+  }
+
   return (
     <>
       <div>
@@ -11,22 +45,28 @@ export default function BenchMarkForm() {
 
         <LabeledInput
           label="제목:"
-          value="value"
-          onChange={() => alert("onchange")}
+          value={defaultInfo.title}
+          onChange={handleChangeDefaultInfoTitle}
         />
 
-        <LabeledInput label="용어 설명:" value="용" onChange={() => 1} />
+        <LabeledInput
+          label="용어 설명:"
+          value={defaultInfo.description}
+          onChange={handleChangeDefaultInfoDescribe}
+        />
       </div>
 
       <hr />
       <BenchMarkSource />
 
-      <SaveButton onClick={() => alert("저장")} />
+      <SaveButton onClick={saveBenchMarkToLocalStorage} />
     </>
   );
-}
+};
 
-const benchMarkStatus = {
+export default BenchMarkForm;
+
+const initialDefaultInfo = {
   title: "제목입니다.",
   describe: "용어 설명입니다.",
 };
