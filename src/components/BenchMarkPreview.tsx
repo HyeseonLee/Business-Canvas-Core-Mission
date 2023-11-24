@@ -41,6 +41,7 @@ const BenchMarkPreview: React.FC = () => {
       {previewData.sources &&
         previewData.sources.map((source) => (
           <div
+            key={source.id}
             style={{
               padding: "10px 6px",
               borderTop: "1px dashed var(--colorBorder)",
@@ -65,6 +66,7 @@ const BenchMarkPreview: React.FC = () => {
             {source.dataArr &&
               source.dataArr.map((data) => (
                 <div
+                  key={data.id}
                   style={{
                     padding: "8px",
                     border: "1px solid var(--colorBgContainerDisabled)",
