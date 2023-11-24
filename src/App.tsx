@@ -6,7 +6,9 @@ import sourceReducer from "./reducers/sourceReducer";
 import BenchMarkForm from "./components/BenchMarkForm";
 import { DefaultInfoContext } from "./context/DefaultInfoContext";
 import { DefaultInfo } from "./types/benchmark";
-
+import BenchMarkPreview from "./components/BenchMarkPreview";
+import { Flex } from "antd";
+import { PageContainer } from "./components/styled/Container";
 function App() {
   const [sources, dispatch] = useReducer(
     sourceReducer,
@@ -47,7 +49,16 @@ function App() {
       <SourceContext.Provider value={sources}>
         <SourceDispatchContext.Provider value={dispatch}>
           <div className="App">
-            <BenchMarkForm />
+            <PageContainer>
+              <BenchMarkForm />
+              <div
+                style={{
+                  borderLeft: "1px solid rgba(0,0,0,0.1)",
+                  margin: "0px 10px",
+                }}
+              ></div>
+              <BenchMarkPreview />
+            </PageContainer>
           </div>
         </SourceDispatchContext.Provider>
       </SourceContext.Provider>

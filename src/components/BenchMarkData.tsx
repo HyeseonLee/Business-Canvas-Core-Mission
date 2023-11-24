@@ -14,10 +14,11 @@ const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
       <div
         style={{
           padding: "10px",
-          border: "1px solid #f0f0f0",
+          margin: "10px 0px",
+          border: "1px solid var(--colorBgContainerDisabled)",
           borderRadius: "8px",
           position: "relative",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "var(--colorBgContainerDisabled)",
         }}
       >
         <DeleteButton target="data" sourceId={sourceId} dataId={data.id} />
@@ -35,6 +36,9 @@ const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
               content: e.target.value,
             })
           }
+          style={{
+            marginTop: "10px",
+          }}
         />
       </div>
     </>

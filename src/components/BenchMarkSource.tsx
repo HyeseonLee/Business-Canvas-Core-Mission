@@ -9,8 +9,15 @@ const BenchMarkSource: React.FC = () => {
   const dispatch = useSourceDispatchContext();
 
   return (
-    <>
+    <div
+      style={{
+        padding: "10px 0",
+        borderTop: "1px solid var(--colorBorder)",
+        marginBottom: "10px",
+      }}
+    >
       <MediumText fontWeight={600}>벤치마크 출처</MediumText>
+
       {sources &&
         sources.map((source) => <SourceItem key={source.id} source={source} />)}
 
@@ -24,7 +31,7 @@ const BenchMarkSource: React.FC = () => {
       >
         <MediumText fontWeight={600}>벤치마크 출처 추가하기</MediumText>
       </Button>
-    </>
+    </div>
   );
 };
 

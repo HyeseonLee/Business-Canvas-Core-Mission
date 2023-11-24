@@ -6,6 +6,7 @@ import SaveButton from "./styled/SaveButton";
 
 import { useSourceContext } from "../context/SourceContext";
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";
+import { OuterContainer } from "./styled/Container";
 
 const BenchMarkForm: React.FC = () => {
   const source = useSourceContext();
@@ -37,9 +38,13 @@ const BenchMarkForm: React.FC = () => {
   }
 
   return (
-    <>
-      <div>
-        <LargeText>Benchmark</LargeText>
+    <OuterContainer flexBasis="55%">
+      <LargeText>Benchmark</LargeText>
+      <div
+        style={{
+          margin: "10px 0px",
+        }}
+      >
         <LabeledInput
           label="제목"
           name="title"
@@ -55,11 +60,10 @@ const BenchMarkForm: React.FC = () => {
         />
       </div>
 
-      <hr />
       <BenchMarkSource />
 
       <SaveButton onClick={saveBenchMarkToLocalStorage} />
-    </>
+    </OuterContainer>
   );
 };
 
