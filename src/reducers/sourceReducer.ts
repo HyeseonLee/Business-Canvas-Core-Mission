@@ -5,7 +5,7 @@ import { SourcesAction } from "../types/benchmark";
 export default function sourceReducer(
   sources: Source[],
   action: SourcesAction
-) {
+): Source[] {
   switch (action.type) {
     case "INIT_SOURCES": {
       return action.sources;

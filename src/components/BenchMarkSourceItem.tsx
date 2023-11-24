@@ -19,7 +19,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
         padding: "10px",
         margin: "10px 0px",
         border: "1px solid #f0f0f0",
-        borderRadius: "0 0 8px 8px",
+        borderRadius: "6px",
         position: "relative",
       }}
     >
@@ -41,11 +41,12 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
           sourceId={source.id}
         />
       </div>
-      {/* 벤치마크 데이터 */}
+
       {source &&
         source.dataArr.map((data) => (
           <BenchMarkData key={data.id} sourceId={source.id} data={data} />
         ))}
+
       <AddButton
         text="벤치마크 데이터 추가하기"
         onClick={() =>

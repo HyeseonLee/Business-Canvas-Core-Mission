@@ -1,9 +1,10 @@
 import { LargeText, MediumText } from "./styled/Text";
-import { Button, Flex } from "antd";
+import { Flex } from "antd";
 import { BookTwoTone } from "@ant-design/icons";
 import { OuterContainer } from "./styled/Container";
 import { usePreviewContext } from "../context/PreviewContext";
 import MarkDown from "react-markdown";
+import UrlButton from "./buttons/UrlButton";
 
 const BenchMarkPreview: React.FC = () => {
   const { previewData } = usePreviewContext();
@@ -55,23 +56,9 @@ const BenchMarkPreview: React.FC = () => {
               <MediumText fontWeight={600} marginRight="4px" marginLeft="4px">
                 {source.title ? source.title : "벤치마크 출처 제목 미리보기"}
               </MediumText>
-              <Button
-                type="text"
-                href={source.url ? source.url : "#"}
-                target="_blank"
-                style={{
-                  borderRadius: "4px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "0px 8px",
-                }}
-              >
-                <LargeText fontWeight={400} color="var(--colorPrimaryBase)">
-                  URL
-                </LargeText>
-              </Button>
+              <UrlButton href={source.url ? source.url : "#"} />
             </Flex>
+
             {source.dataArr &&
               source.dataArr.map((data) => (
                 <div

@@ -4,7 +4,7 @@ import { SourceContext } from "./context/SourceContext";
 import sourceReducer from "./reducers/sourceReducer";
 import BenchMarkForm from "./components/BenchMarkForm";
 import { DefaultInfoContext } from "./context/DefaultInfoContext";
-import { BenchMarkInfo, DefaultInfo, Source } from "./types/benchmark";
+import { BenchMarkInfo, DefaultInfo } from "./types/benchmark";
 import BenchMarkPreview from "./components/BenchMarkPreview";
 import { PageContainer } from "./components/styled/Container";
 import { v4 as uuidv4 } from "uuid";
