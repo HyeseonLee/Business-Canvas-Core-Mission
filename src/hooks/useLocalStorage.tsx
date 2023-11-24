@@ -10,10 +10,12 @@ export function useLocalStorage() {
   const sources = useSourceContext();
 
   function isValidUrl(url: string) {
-    try {
-      new URL(url);
-    } catch (_) {
-      return false;
+    if (url && url.trim() !== "") {
+      try {
+        new URL(url);
+      } catch (_) {
+        return false;
+      }
     }
     return true;
   }
