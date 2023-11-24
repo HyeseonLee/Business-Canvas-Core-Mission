@@ -72,6 +72,7 @@ const BenchMarkPreview: React.FC = () => {
                     border: "1px solid var(--colorBgContainerDisabled)",
                     borderRadius: "6px",
                     backgroundColor: "var(--colorBgContainer)",
+                    marginTop: "10px",
                   }}
                 >
                   {/* markdown 지원 */}
