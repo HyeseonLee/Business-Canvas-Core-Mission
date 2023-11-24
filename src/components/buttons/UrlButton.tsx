@@ -2,7 +2,7 @@ import { Button } from "antd";
 import { LargeText } from "../styled/Text";
 
 type Props = {
-  href: string;
+  href: string | undefined;
   target: string;
 };
 const UrlButton = ({ href, target }: Props): JSX.Element => {

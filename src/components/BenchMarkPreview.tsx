@@ -58,8 +58,8 @@ const BenchMarkPreview: React.FC = () => {
                 {source.title ? source.title : "벤치마크 출처 제목 미리보기"}
               </MediumText>
               <UrlButton
-                href={source.url ? source.url : "#"}
-                target={source.url ? "_blank" : ""}
+                href={source.url.trim() ? source.url : undefined}
+                target={source.url.trim() !== "" ? "_blank" : ""}
               />
             </Flex>
 
