@@ -2,11 +2,13 @@ import SourceItem from "./SourceItem";
 import { Button } from "antd";
 import { MediumText } from "./styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
-import { useSourceContext } from "../context/SourceContext";
-import { useSourceDispatchContext } from "../context/SourceContext";
+import {
+  useSourceContext,
+  useSourceDispatchContext,
+} from "../context/SourceContext";
 const BenchMarkSource: React.FC = () => {
-  const sources = useSourceContext();
   const dispatch = useSourceDispatchContext();
+  const sources = useSourceContext();
 
   return (
     <div
@@ -28,6 +30,10 @@ const BenchMarkSource: React.FC = () => {
             type: "ADD_SOURCE",
           })
         }
+        style={{
+          display: "block",
+          marginTop: "10px",
+        }}
       >
         <MediumText fontWeight={600}>벤치마크 출처 추가하기</MediumText>
       </Button>

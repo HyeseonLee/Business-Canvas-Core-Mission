@@ -1,3 +1,9 @@
+export type BenchMarkInfo = {
+  title: string;
+  description: string;
+  sources: Source[];
+};
+
 export type DefaultInfo = {
   title: string;
   description: string;

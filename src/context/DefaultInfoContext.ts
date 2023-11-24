@@ -1,10 +1,10 @@
 import { createContext, useContext } from "react";
 import { DefaultInfo } from "../types/benchmark";
 
-interface DefaultInfoContextType {
+type DefaultInfoContextType = {
   defaultInfo: DefaultInfo;
   setDefaultInfo: React.Dispatch<React.SetStateAction<DefaultInfo>>;
-}
+};
 
 export const DefaultInfoContext = createContext<DefaultInfoContextType | null>(
   null

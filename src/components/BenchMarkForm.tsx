@@ -4,13 +4,15 @@ import BenchMarkSource from "./BenchMarkSource";
 import LabeledInput from "./styled/LabeledInput";
 import SaveButton from "./styled/SaveButton";
 
-import { useSourceContext } from "../context/SourceContext";
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";
 import { OuterContainer } from "./styled/Container";
+import { usePreviewContext } from "../context/PreviewContext";
+import { useSourceContext } from "../context/SourceContext";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const BenchMarkForm: React.FC = () => {
-  const source = useSourceContext();
   const { defaultInfo, setDefaultInfo } = useDefaultInfoContext();
+  const { saveBenchMarkToLocalStorage } = useLocalStorage();
 
   function handleChangeDefaultInfoTitle(
     e: React.ChangeEvent<HTMLInputElement>
@@ -29,12 +31,6 @@ const BenchMarkForm: React.FC = () => {
       ...defaultInfo,
       description: e.target.value,
     });
-  }
-
-  function saveBenchMarkToLocalStorage(): void {
-    console.log("🪄 로컬 스토리지에 벤치마크 default Info를 저장합니다.");
-    const combinedBenchMarkInfo = { ...defaultInfo, source };
-    localStorage.setItem("benchMark", JSON.stringify(combinedBenchMarkInfo));
   }
 
   return (

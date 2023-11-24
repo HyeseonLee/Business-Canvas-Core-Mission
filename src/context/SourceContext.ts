@@ -8,9 +8,9 @@ export const SourceDispatchContext =
   createContext<Dispatch<SourcesAction> | null>(null);
 
 export function useSourceContext() {
-  const sourcContext = useContext(SourceContext);
-  if (!sourcContext) throw new Error("SourceContext가 존재하지 않습니다.");
-  return sourcContext;
+  const sourceContext = useContext(SourceContext);
+  if (!sourceContext) throw new Error("SourceContext가 존재하지 않습니다.");
+  return sourceContext;
 }
 
 export function useSourceDispatchContext() {
