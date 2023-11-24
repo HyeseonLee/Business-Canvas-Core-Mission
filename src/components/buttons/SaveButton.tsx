@@ -1,5 +1,5 @@
 import { Flex, Button } from "antd";
-import { MediumText } from "./Text";
+import { MediumText } from "../styled/Text";
 
 type Props = {
   onClick: () => void;

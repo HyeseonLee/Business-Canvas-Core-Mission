@@ -1,11 +1,9 @@
 import { Source } from "../types/benchmark";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "./buttons/DeleteButton";
 import LabeledInput from "./LabeledInput";
-import { Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-import { MediumText } from "./styled/Text";
 import { useSourceContext } from "../context/SourceContext";
 import BenchMarkData from "./BenchMarkData";
+import AddButton from "./buttons/AddButton";
 
 type SourceItemProps = {
   source: Source;
@@ -48,18 +46,15 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
         source.dataArr.map((data) => (
           <BenchMarkData key={data.id} sourceId={source.id} data={data} />
         ))}
-
-      <Button
-        icon={<PlusOutlined />}
+      <AddButton
+        text="벤치마크 데이터 추가하기"
         onClick={() =>
           dispatch({
             type: "ADD_DATA",
             sourceId: source.id,
           })
         }
-      >
-        <MediumText fontWeight={600}>벤치마크 데이터 추가하기</MediumText>
-      </Button>
+      />
     </div>
   );
 };

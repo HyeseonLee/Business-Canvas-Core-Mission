@@ -1,7 +1,7 @@
 import { MinusOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider } from "antd";
-import { MediumText } from "./styled/Text";
-import { useSourceContext } from "../context/SourceContext";
+import { MediumText } from "../styled/Text";
+import { useSourceContext } from "../../context/SourceContext";
 
 type Props = {
   target: string;
