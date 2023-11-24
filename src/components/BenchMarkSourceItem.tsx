@@ -11,6 +11,13 @@ type SourceItemProps = {
 
 const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
   const { dispatch } = useSourceContext();
+  const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch({
+      type: "CHANGE_SOURCE",
+      id: source.id,
+      name: e.target.name,
+      value: e.target.value,
+    });
 
   return (
     <div
@@ -31,14 +38,14 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
           name="title"
           value={source.title}
           inputSize="60%"
-          sourceId={source.id}
+          onChange={handleChangeSource}
         />
         <LabeledInput
           label="URL"
           name="url"
           value={source.url}
           inputSize="60%"
-          sourceId={source.id}
+          onChange={handleChangeSource}
         />
       </div>
 
