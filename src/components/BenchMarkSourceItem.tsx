@@ -1,6 +1,6 @@
 import { Source } from "../types/benchmark";
 import DeleteButton from "./buttons/DeleteButton";
-import LabeledInput from "./LabeledInput";
+import LabeledInput from "./inputs/LabeledInput";
 import { useSourceContext } from "../context/SourceContext";
 import BenchMarkData from "./BenchMarkData";
 import AddButton from "./buttons/AddButton";

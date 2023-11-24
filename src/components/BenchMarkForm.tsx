@@ -1,6 +1,6 @@
 import { LargeText } from "./styled/Text";
 import BenchMarkSource from "./BenchMarkSource";
-import LabeledInput from "./LabeledInput";
+import LabeledInput from "./inputs/LabeledInput";
 import SaveButton from "./buttons/SaveButton";
 
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";

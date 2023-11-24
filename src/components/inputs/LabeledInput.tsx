@@ -1,5 +1,5 @@
 import { Flex, Input } from "antd";
-import { InputLabelText } from "./styled/Text";
+import { InputLabelText } from "../styled/Text";
 import styled from "styled-components";
 
 const CustomInput = styled(Input)<{ inputSize?: string }>`

@@ -3,13 +3,14 @@ import { LargeText } from "../styled/Text";
 
 type Props = {
   href: string;
+  target: string;
 };
-const UrlButton = ({ href }: Props): JSX.Element => {
+const UrlButton = ({ href, target }: Props): JSX.Element => {
   return (
     <Button
       type="text"
       href={href}
-      target="_blank"
+      target={target}
       style={{
         borderRadius: "4px",
         display: "flex",

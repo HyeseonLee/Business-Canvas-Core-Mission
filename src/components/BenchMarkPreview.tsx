@@ -56,7 +56,10 @@ const BenchMarkPreview: React.FC = () => {
               <MediumText fontWeight={600} marginRight="4px" marginLeft="4px">
                 {source.title ? source.title : "벤치마크 출처 제목 미리보기"}
               </MediumText>
-              <UrlButton href={source.url ? source.url : "#"} />
+              <UrlButton
+                href={source.url ? source.url : "#"}
+                target={source.url ? "_blank" : ""}
+              />
             </Flex>
 
             {source.dataArr &&
