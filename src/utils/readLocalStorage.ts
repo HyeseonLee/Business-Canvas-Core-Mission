@@ -23,7 +23,19 @@ export async function readDefaultInfoFromLocalStorage(): Promise<DefaultInfo> {
 export async function readSourceFromLocalStorage(): Promise<Source[]> {
   const benchMarkInfo = await getItemFromLocalForage();
   if (benchMarkInfo == null) {
-    return [{ id: uuidv4(), title: "", url: "", dataArr: [] }];
+    return [
+      {
+        id: uuidv4(),
+        title: "",
+        url: "",
+        dataArr: [
+          {
+            id: uuidv4(),
+            content: "",
+          },
+        ],
+      },
+    ];
   } else {
     return benchMarkInfo.sources;
   }

@@ -21,7 +21,12 @@ function App() {
       id: uuidv4(),
       title: "",
       url: "",
-      dataArr: [],
+      dataArr: [
+        {
+          id: uuidv4(),
+          content: "",
+        },
+      ],
     },
   ]);
   const [defaultInfo, setDefaultInfo] = useState<DefaultInfo>({
