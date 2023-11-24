@@ -17,10 +17,20 @@ export function useLocalStorage() {
   function updateBenchMarkPreview() {
     console.log("🪄 벤치마크 프리뷰를 업데이트합니다.");
     const benchMarkInfo = localStorage.getItem("benchMark");
-    if (benchMarkInfo == null) return {};
-    else {
-      setPreviewData(JSON.parse(benchMarkInfo));
-      console.log("previewDAta", previewData);
+    if (benchMarkInfo == null) {
+      setPreviewData({
+        title: "",
+        description: "",
+        sources: [],
+      });
+    } else {
+      const { title, description, source } = JSON.parse(benchMarkInfo);
+
+      setPreviewData({
+        title: title,
+        description: description,
+        sources: source,
+      });
     }
   }
 
