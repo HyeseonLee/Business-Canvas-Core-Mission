@@ -19,10 +19,10 @@
 
 ## 브랜치 이름
 
-1단계 : step1-benchmark-form  
-2단계 : step2-benchmark-preview  
-3단계 : step3-change-to-localforage  
-4단계 : step4-markdown-syntax
+* 1단계 : step1-benchmark-form  
+* 2단계 : step2-benchmark-preview  
+* 3단계 : step3-change-to-localforage  
+* 4단계 : step4-markdown-syntax
 
 ## 디렉토리 구조
 
