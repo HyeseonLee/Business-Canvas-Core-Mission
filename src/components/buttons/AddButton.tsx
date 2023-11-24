@@ -10,7 +10,7 @@ const AddButton = ({ onClick, text }: Props): JSX.Element => {
     <Button
       icon={<PlusOutlined />}
       onClick={onClick}
-      style={{ display: "block" }}
+      style={{ display: "block", marginTop: "10px }}
     >
       <MediumText fontWeight={600}>{text}</MediumText>
     </Button>
