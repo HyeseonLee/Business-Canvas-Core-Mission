@@ -18,8 +18,8 @@ export function readSourceFromLocalStorage() {
     return [{ id: "", title: "", url: "", dataArr: [] }];
   } else {
     const wholeData = JSON.parse(benchMarkInfo);
-    const { sources } = wholeData;
-    return sources;
+    const { source } = wholeData;
+    return source;
   }
 }
 
@@ -29,7 +29,7 @@ export function readPreviewDataFromLocalStorage() {
     return { title: "", description: "", sources: [] };
   } else {
     const wholeData = JSON.parse(benchMarkInfo);
-    const { title, description, sources } = wholeData;
-    return { title, description, sources: sources };
+    const { title, description, source } = wholeData;
+    return { title, description, sources: source };
   }
 }

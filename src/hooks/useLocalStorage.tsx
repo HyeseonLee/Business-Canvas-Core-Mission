@@ -9,7 +9,7 @@ export function useLocalStorage() {
 
   function saveBenchMarkToLocalStorage(): void {
     console.log("🪄 로컬 스토리지에 벤치마크 default Info를 저장합니다.");
-    const combinedBenchMarkInfo = { ...defaultInfo, sources: sources };
+    const combinedBenchMarkInfo = { ...defaultInfo, source: sources };
     localStorage.setItem("benchMark", JSON.stringify(combinedBenchMarkInfo));
     updateBenchMarkPreview();
   }
