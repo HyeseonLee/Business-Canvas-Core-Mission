@@ -1,4 +1,4 @@
-export type BenchMarkDefaultInfo = {
+export type DefaultInfo = {
   title: string;
   description: string;
 };

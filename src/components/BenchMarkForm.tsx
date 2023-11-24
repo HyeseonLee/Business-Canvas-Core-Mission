@@ -4,20 +4,16 @@ import BenchMarkSource from "./BenchMarkSource";
 import LabeledInput from "./styled/LabeledInput";
 import SaveButton from "./styled/SaveButton";
 
-import { BenchMarkDefaultInfo } from "../types/benchmark";
 import { useSourceContext } from "../context/SourceContext";
+import { useDefaultInfoContext } from "../context/DefaultInfoContext";
 
 const BenchMarkForm: React.FC = () => {
   const source = useSourceContext();
-  const [defaultInfo, setDefaultInfo] = useState<BenchMarkDefaultInfo>({
-    title: "",
-    description: "",
-  });
+  const { defaultInfo, setDefaultInfo } = useDefaultInfoContext();
 
   function handleChangeDefaultInfoTitle(
     e: React.ChangeEvent<HTMLInputElement>
   ) {
-    e.stopPropagation();
     console.log("🪄 벤치마크 제목을 변경합니다.");
     setDefaultInfo({
       ...defaultInfo,
@@ -46,12 +42,14 @@ const BenchMarkForm: React.FC = () => {
         <LargeText>Benchmark</LargeText>
         <LabeledInput
           label="제목"
+          name="title"
           value={defaultInfo.title}
           onChange={handleChangeDefaultInfoTitle}
         />
 
         <LabeledInput
           label="용어 설명"
+          name="description"
           value={defaultInfo.description}
           onChange={handleChangeDefaultInfoDescribe}
         />
