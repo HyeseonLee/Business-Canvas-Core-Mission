@@ -9,11 +9,28 @@ export function useLocalStorage() {
   const { setPreviewData } = usePreviewContext();
   const sources = useSourceContext();
 
+  function isValidUrl(url: string) {
+    try {
+      new URL(url);
+    } catch (_) {
+      return false;
+    }
+    return true;
+  }
   async function saveBenchMarkToLocalStorage() {
     const combinedBenchMarkInfo = { ...defaultInfo, sources: sources };
-    await localforage
-      .setItem("benchMark", combinedBenchMarkInfo)
-      .then(async () => await updateBenchMarkPreview());
+
+    const isValidSourceUrl: boolean = sources.every((source) =>
+      isValidUrl(source.url)
+    );
+
+    if (isValidSourceUrl) {
+      await localforage
+        .setItem("benchMark", combinedBenchMarkInfo)
+        .then(async () => await updateBenchMarkPreview());
+    } else {
+      alert("유효하지 않은 URL 형식이 존재합니다. 확인해주세요.");
+    }
   }
 
   async function updateBenchMarkPreview() {
