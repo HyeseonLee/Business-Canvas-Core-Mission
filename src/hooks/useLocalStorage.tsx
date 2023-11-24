@@ -7,7 +7,7 @@ import { BenchMarkInfo } from "../types/benchmark";
 export function useLocalStorage() {
   const { defaultInfo } = useDefaultInfoContext();
   const { setPreviewData } = usePreviewContext();
-  const sources = useSourceContext();
+  const { sources } = useSourceContext();
 
   function isValidUrl(url: string) {
     if (url && url.trim() !== "") {

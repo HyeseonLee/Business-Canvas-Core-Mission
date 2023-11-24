@@ -2,13 +2,13 @@ import { Input } from "antd";
 import DeleteButton from "./DeleteButton";
 import { MediumText } from "./styled/Text";
 import { Data } from "../types/benchmark";
-import { useSourceDispatchContext } from "../context/SourceContext";
+import { useSourceContext } from "../context/SourceContext";
 type BenchMarkDataProps = {
   sourceId: string;
   data: Data;
 };
 const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
-  const dispatch = useSourceDispatchContext();
+  const { dispatch } = useSourceContext();
   return (
     <>
       <div

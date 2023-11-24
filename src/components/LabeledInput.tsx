@@ -1,6 +1,6 @@
 import { Flex, Input } from "antd";
 import { InputLabelText } from "./styled/Text";
-import { useSourceDispatchContext } from "../context/SourceContext";
+import { useSourceContext } from "../context/SourceContext";
 
 type Props = {
   label: string;
@@ -18,7 +18,8 @@ const LabeledInput = ({
   inputSize,
   sourceId,
 }: Props): JSX.Element => {
-  const dispatch = useSourceDispatchContext();
+  const { dispatch } = useSourceContext();
+
   return (
     <Flex justify="flex-start" align="center" style={{ marginBottom: "10px" }}>
       <InputLabelText>{label}:</InputLabelText>

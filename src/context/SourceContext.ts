@@ -1,21 +1,15 @@
 import { createContext, useContext } from "react";
 import { Source } from "../types/benchmark";
-import { SourcesAction } from "../reducers/sourceReducer";
-import { Dispatch } from "react";
+import { SourcesAction } from "../reducers/sourceAction";
 
-export const SourceContext = createContext<Source[] | null>(null);
-export const SourceDispatchContext =
-  createContext<Dispatch<SourcesAction> | null>(null);
+type SourceContextType = {
+  sources: Source[];
+  dispatch: React.Dispatch<SourcesAction>;
+};
+export const SourceContext = createContext<SourceContextType | null>(null);
 
 export function useSourceContext() {
   const sourceContext = useContext(SourceContext);
   if (!sourceContext) throw new Error("SourceContext가 존재하지 않습니다.");
   return sourceContext;
-}
-
-export function useSourceDispatchContext() {
-  const sourceDispatchContext = useContext(SourceDispatchContext);
-  if (!sourceDispatchContext)
-    throw new Error("SourceDispatchContext가 존재하지 않습니다.");
-  return sourceDispatchContext;
 }

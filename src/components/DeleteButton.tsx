@@ -1,7 +1,7 @@
 import { MinusOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider } from "antd";
 import { MediumText } from "./styled/Text";
-import { useSourceDispatchContext } from "../context/SourceContext";
+import { useSourceContext } from "../context/SourceContext";
 
 type Props = {
   target: string;
@@ -9,7 +9,7 @@ type Props = {
   dataId?: string;
 };
 const DeleteButton = ({ target, sourceId, dataId }: Props): JSX.Element => {
-  const dispatch = useSourceDispatchContext();
+  const { dispatch } = useSourceContext();
 
   return (
     <ConfigProvider

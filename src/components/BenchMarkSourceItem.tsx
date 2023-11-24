@@ -4,7 +4,7 @@ import LabeledInput from "./LabeledInput";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { MediumText } from "./styled/Text";
-import { useSourceDispatchContext } from "../context/SourceContext";
+import { useSourceContext } from "../context/SourceContext";
 import BenchMarkData from "./BenchMarkData";
 
 type SourceItemProps = {
@@ -12,7 +12,7 @@ type SourceItemProps = {
 };
 
 const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
-  const dispatch = useSourceDispatchContext();
+  const { dispatch } = useSourceContext();
 
   return (
     <div

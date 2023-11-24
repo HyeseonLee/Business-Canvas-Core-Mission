@@ -2,13 +2,9 @@ import BenchMarkSourceItem from "./BenchMarkSourceItem";
 import { Button } from "antd";
 import { MediumText } from "./styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
-import {
-  useSourceContext,
-  useSourceDispatchContext,
-} from "../context/SourceContext";
+import { useSourceContext } from "../context/SourceContext";
 const BenchMarkSource: React.FC = () => {
-  const dispatch = useSourceDispatchContext();
-  const sources = useSourceContext();
+  const { sources, dispatch } = useSourceContext();
 
   return (
     <div
