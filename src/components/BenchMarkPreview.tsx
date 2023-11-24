@@ -3,9 +3,12 @@ import { Button, Flex } from "antd";
 import { BookTwoTone } from "@ant-design/icons";
 import { OuterContainer } from "./styled/Container";
 import { usePreviewContext } from "../context/PreviewContext";
+import MarkDown from "react-markdown";
 
 const BenchMarkPreview: React.FC = () => {
   const { previewData } = usePreviewContext();
+
+  function formatDescription(description: string) {}
   return (
     <OuterContainer flexBasis="45%">
       <LargeText>
@@ -23,12 +26,15 @@ const BenchMarkPreview: React.FC = () => {
           backgroundColor: "var(--colorBgContainerDisabled)",
         }}
       >
+        {/* bold, italic markdown 지원 */}
         <MediumText>
-          {previewData
-            ? previewData.description
+          <MarkDown>
+            {previewData
               ? previewData.description
-              : "벤치마크 용어 설명 미리보기"
-            : "벤치마크 용어 설명 미리보기"}
+                ? previewData.description
+                : "벤치마크 용어 설명 미리보기"
+              : "벤치마크 용어 설명 미리보기"}
+          </MarkDown>
         </MediumText>
       </div>
 
@@ -77,8 +83,12 @@ const BenchMarkPreview: React.FC = () => {
                     backgroundColor: "var(--colorBgContainer)",
                   }}
                 >
+                  {/* bold, italic markdown 지원 */}
+
                   <MediumText>
-                    {data.content ? data.content : "벤치마크 데이터 미리보기"}
+                    <MarkDown>
+                      {data.content ? data.content : "벤치마크 데이터 미리보기"}
+                    </MarkDown>
                   </MediumText>
                 </div>
               ))}

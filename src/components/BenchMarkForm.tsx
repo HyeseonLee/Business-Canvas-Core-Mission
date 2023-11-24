@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { LargeText } from "./styled/Text";
 import BenchMarkSource from "./BenchMarkSource";
 import LabeledInput from "./styled/LabeledInput";
@@ -6,8 +5,6 @@ import SaveButton from "./styled/SaveButton";
 
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";
 import { OuterContainer } from "./styled/Container";
-import { usePreviewContext } from "../context/PreviewContext";
-import { useSourceContext } from "../context/SourceContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const BenchMarkForm: React.FC = () => {
@@ -48,6 +45,7 @@ const BenchMarkForm: React.FC = () => {
           onChange={handleChangeDefaultInfoTitle}
         />
 
+        {/* bold, italic 마크다운  syntax 지원 */}
         <LabeledInput
           label="용어 설명"
           name="description"
