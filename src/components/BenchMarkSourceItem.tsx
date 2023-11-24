@@ -1,16 +1,17 @@
 import { Source } from "../types/benchmark";
-import DeleteButton from "./styled/DeleteButton";
-import LabeledInput from "./styled/LabeledInput";
+import DeleteButton from "./DeleteButton";
+import LabeledInput from "./LabeledInput";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { MediumText } from "./styled/Text";
 import { useSourceDispatchContext } from "../context/SourceContext";
 import BenchMarkData from "./BenchMarkData";
+
 type SourceItemProps = {
   source: Source;
 };
 
-const SourceItem: React.FC<SourceItemProps> = ({ source }) => {
+const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
   const dispatch = useSourceDispatchContext();
 
   return (
@@ -63,4 +64,4 @@ const SourceItem: React.FC<SourceItemProps> = ({ source }) => {
   );
 };
 
-export default SourceItem;
+export default BenchMarkSourceItem;

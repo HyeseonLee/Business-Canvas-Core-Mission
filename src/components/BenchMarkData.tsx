@@ -1,5 +1,5 @@
 import { Input } from "antd";
-import DeleteButton from "./styled/DeleteButton";
+import DeleteButton from "./DeleteButton";
 import { MediumText } from "./styled/Text";
 import { Data } from "../types/benchmark";
 import { useSourceDispatchContext } from "../context/SourceContext";

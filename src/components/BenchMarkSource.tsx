@@ -1,4 +1,4 @@
-import SourceItem from "./SourceItem";
+import BenchMarkSourceItem from "./BenchMarkSourceItem";
 import { Button } from "antd";
 import { MediumText } from "./styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
@@ -21,7 +21,9 @@ const BenchMarkSource: React.FC = () => {
       <MediumText fontWeight={600}>벤치마크 출처</MediumText>
 
       {sources &&
-        sources.map((source) => <SourceItem key={source.id} source={source} />)}
+        sources.map((source) => (
+          <BenchMarkSourceItem key={source.id} source={source} />
+        ))}
 
       <Button
         icon={<PlusOutlined />}

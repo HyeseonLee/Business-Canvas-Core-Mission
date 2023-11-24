@@ -1,6 +1,6 @@
 import { Flex, Input } from "antd";
-import { InputLabelText } from "./Text";
-import { useSourceDispatchContext } from "../../context/SourceContext";
+import { InputLabelText } from "./styled/Text";
+import { useSourceDispatchContext } from "../context/SourceContext";
 
 type Props = {
   label: string;

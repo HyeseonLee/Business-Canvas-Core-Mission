@@ -1,6 +1,6 @@
 import { LargeText } from "./styled/Text";
 import BenchMarkSource from "./BenchMarkSource";
-import LabeledInput from "./styled/LabeledInput";
+import LabeledInput from "./LabeledInput";
 import SaveButton from "./styled/SaveButton";
 
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";
@@ -14,7 +14,6 @@ const BenchMarkForm: React.FC = () => {
   function handleChangeDefaultInfoTitle(
     e: React.ChangeEvent<HTMLInputElement>
   ) {
-    console.log("🪄 벤치마크 제목을 변경합니다.");
     setDefaultInfo({
       ...defaultInfo,
       title: e.target.value,
@@ -45,7 +44,6 @@ const BenchMarkForm: React.FC = () => {
           onChange={handleChangeDefaultInfoTitle}
         />
 
-        {/* bold, italic 마크다운  syntax 지원 */}
         <LabeledInput
           label="용어 설명"
           name="description"

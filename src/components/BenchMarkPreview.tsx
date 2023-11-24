@@ -8,7 +8,6 @@ import MarkDown from "react-markdown";
 const BenchMarkPreview: React.FC = () => {
   const { previewData } = usePreviewContext();
 
-  function formatDescription(description: string) {}
   return (
     <OuterContainer flexBasis="45%">
       <LargeText>
@@ -26,7 +25,7 @@ const BenchMarkPreview: React.FC = () => {
           backgroundColor: "var(--colorBgContainerDisabled)",
         }}
       >
-        {/* bold, italic markdown 지원 */}
+        {/* markdown 지원 */}
         <MediumText>
           <MarkDown>
             {previewData
@@ -83,8 +82,7 @@ const BenchMarkPreview: React.FC = () => {
                     backgroundColor: "var(--colorBgContainer)",
                   }}
                 >
-                  {/* bold, italic markdown 지원 */}
-
+                  {/* markdown 지원 */}
                   <MediumText>
                     <MarkDown>
                       {data.content ? data.content : "벤치마크 데이터 미리보기"}
