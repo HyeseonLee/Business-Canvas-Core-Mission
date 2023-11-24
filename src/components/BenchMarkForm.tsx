@@ -19,7 +19,7 @@ const BenchMarkForm: React.FC = () => {
   }
 
   return (
-    <OuterContainer flexBasis="55%">
+    <OuterContainer flexbasis="55%">
       <LargeText>Benchmark</LargeText>
       <div
         style={{

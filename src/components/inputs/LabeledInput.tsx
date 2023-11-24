@@ -2,18 +2,18 @@ import { Flex, Input } from "antd";
 import { InputLabelText } from "../styled/Text";
 import styled from "styled-components";
 
-const CustomInput = styled(Input)<{ inputSize?: string }>`
+const CustomInput = styled(Input)<{ inputsize?: string }>`
   white-space: "nowrap";
   overflow: "hidden";
   text-overflow: "ellipsis";
-  width: ${(props) => props.inputSize || "auto"};
+  width: ${(props) => props.inputsize || "auto"};
 `;
 type Props = {
   label: string;
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputSize?: string;
+  inputsize?: string;
 };
 
 const LabeledInput = ({
@@ -21,7 +21,7 @@ const LabeledInput = ({
   name,
   value,
   onChange,
-  inputSize,
+  inputsize,
 }: Props): JSX.Element => {
   return (
     <Flex justify="flex-start" align="center" style={{ marginBottom: "10px" }}>
@@ -30,7 +30,7 @@ const LabeledInput = ({
         name={name}
         value={value}
         onChange={onChange}
-        inputSize={inputSize}
+        inputsize={inputsize}
       />
     </Flex>
   );

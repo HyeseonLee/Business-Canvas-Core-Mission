@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Flex } from "antd";
 
 type OuterContainerProps = {
-  flexBasis?: string;
+  flexbasis?: string;
 };
 export const PageContainer = styled(Flex)`
   width: 100%;
@@ -11,5 +11,5 @@ export const PageContainer = styled(Flex)`
 `;
 export const OuterContainer = styled.div<OuterContainerProps>`
   padding: 16px 12px 12px 12px;
-  flex-basis: ${(props) => (props.flexBasis ? props.flexBasis : "100%")};
+  flex-basis: ${(props) => (props.flexbasis ? props.flexbasis : "100%")};
 `;

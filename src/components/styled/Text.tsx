@@ -8,8 +8,8 @@ type LargeTextProps = {
 type MediumTextProps = {
   fontWeight?: number;
   color?: string;
-  marginRight?: string;
-  marginLeft?: string;
+  marginright?: string;
+  marginleft?: string;
   lineHeight?: string;
 };
 
@@ -31,8 +31,8 @@ export const MediumText = styled(Typography.Text)<MediumTextProps>`
   line-height: ${(props) => (props.lineHeight ? props.lineHeight : "20px")};
   color: ${(props) => (props.color ? props.color : "var(--colorText)")};
   font-variant-numeric: lining-nums tabular-nums;
-  margin-right: ${(props) => (props.marginRight ? props.marginRight : "0px")};
-  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "0px")};
+  margin-right: ${(props) => (props.marginright ? props.marginright : "0px")};
+  margin-left: ${(props) => (props.marginleft ? props.marginleft : "0px")};
 `;
 
 export const InputLabelText = styled(Typography.Text)`

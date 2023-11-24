@@ -10,7 +10,7 @@ const BenchMarkPreview: React.FC = () => {
   const { previewData } = usePreviewContext();
 
   return (
-    <OuterContainer flexBasis="45%">
+    <OuterContainer flexbasis="45%">
       <LargeText>
         {previewData
           ? previewData.title
@@ -54,7 +54,7 @@ const BenchMarkPreview: React.FC = () => {
               style={{ padding: "4px 0px", marginBottom: "10px" }}
             >
               <BookTwoTone />
-              <MediumText fontWeight={600} marginRight="4px" marginLeft="4px">
+              <MediumText fontWeight={600} marginright="4px" marginleft="4px">
                 {source.title ? source.title : "벤치마크 출처 제목 미리보기"}
               </MediumText>
               <UrlButton

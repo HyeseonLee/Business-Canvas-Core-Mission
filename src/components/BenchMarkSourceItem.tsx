@@ -37,14 +37,14 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
           label="제목"
           name="title"
           value={source.title}
-          inputSize="60%"
+          inputsize="60%"
           onChange={handleChangeSource}
         />
         <LabeledInput
           label="URL"
           name="url"
           value={source.url}
-          inputSize="60%"
+          inputsize="60%"
           onChange={handleChangeSource}
         />
       </div>
