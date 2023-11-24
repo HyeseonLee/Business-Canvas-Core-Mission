@@ -2,7 +2,6 @@ import { LargeText, MediumText } from "./styled/Text";
 import { Button, Flex } from "antd";
 import { BookTwoTone } from "@ant-design/icons";
 import { OuterContainer } from "./styled/Container";
-import { BenchMarkInfo } from "../types/benchmark";
 import { usePreviewContext } from "../context/PreviewContext";
 
 const BenchMarkPreview: React.FC = () => {
