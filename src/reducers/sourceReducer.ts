@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { Source } from "../types/benchmark";
-import { SourcesAction } from "./sourceAction";
+import { SourcesAction } from "../types/benchmark";
 
 export default function sourceReducer(
   sources: Source[],

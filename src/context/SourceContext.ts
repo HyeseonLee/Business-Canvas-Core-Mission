@@ -1,14 +1,9 @@
 import { createContext, useContext } from "react";
-import { Source } from "../types/benchmark";
-import { SourcesAction } from "../reducers/sourceAction";
+import { SourceContextType } from "../types/benchmark";
 
-type SourceContextType = {
-  sources: Source[];
-  dispatch: React.Dispatch<SourcesAction>;
-};
 export const SourceContext = createContext<SourceContextType | null>(null);
 
-export function useSourceContext() {
+export function useSourceContext(): SourceContextType {
   const sourceContext = useContext(SourceContext);
   if (!sourceContext) throw new Error("SourceContext가 존재하지 않습니다.");
   return sourceContext;

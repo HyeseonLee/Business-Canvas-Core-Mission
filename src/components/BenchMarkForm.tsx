@@ -11,21 +11,10 @@ const BenchMarkForm: React.FC = () => {
   const { defaultInfo, setDefaultInfo } = useDefaultInfoContext();
   const { saveBenchMarkToLocalStorage } = useLocalStorage();
 
-  function handleChangeDefaultInfoTitle(
-    e: React.ChangeEvent<HTMLInputElement>
-  ) {
+  function handleChangeDefaultInfo(e: React.ChangeEvent<HTMLInputElement>) {
     setDefaultInfo({
       ...defaultInfo,
-      title: e.target.value,
-    });
-  }
-
-  function handleChangeDefaultInfoDescribe(
-    e: React.ChangeEvent<HTMLInputElement>
-  ) {
-    setDefaultInfo({
-      ...defaultInfo,
-      description: e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -41,14 +30,14 @@ const BenchMarkForm: React.FC = () => {
           label="제목"
           name="title"
           value={defaultInfo.title}
-          onChange={handleChangeDefaultInfoTitle}
+          onChange={handleChangeDefaultInfo}
         />
 
         <LabeledInput
           label="용어 설명"
           name="description"
           value={defaultInfo.description}
-          onChange={handleChangeDefaultInfoDescribe}
+          onChange={handleChangeDefaultInfo}
         />
       </div>
 
