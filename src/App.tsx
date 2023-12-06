@@ -48,10 +48,7 @@ function App() {
     fetchPreviewData();
   }, []);
 
-  const sourceContextValue = useMemo(
-    () => ({ sources, dispatch }),
-    [sources, dispatch]
-  );
+  const sourceContextValue = useMemo(() => ({ sources, dispatch }), [sources]);
 
   return (
     <SourceContext.Provider value={sourceContextValue}>
