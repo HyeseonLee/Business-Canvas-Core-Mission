@@ -43,7 +43,7 @@ export function useLocalStorage({
       sources: sourcesRef.current,
     };
 
-    const isValidSourceUrl: boolean = sources.every((source) =>
+    const isValidSourceUrl: boolean = sourcesRef.current.every((source) =>
       isValidUrl(source.url)
     );
 

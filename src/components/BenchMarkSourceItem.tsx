@@ -21,7 +21,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
         name: e.target.name,
         value: e.target.value,
       }),
-    []
+    [source.id]
   );
   const deleteButtonOnClick = useCallback(
     () =>
@@ -29,7 +29,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
         type: "DELETE_SOURCE",
         id: source.id,
       }),
-    []
+    [source.id]
   );
   const addButtonOnClick = useCallback(
     () =>
@@ -37,7 +37,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
         type: "ADD_DATA",
         sourceId: source.id,
       }),
-    []
+    [source.id]
   );
 
   return (
