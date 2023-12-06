@@ -2,6 +2,8 @@ import BenchMarkSourceItem from "./BenchMarkSourceItem";
 import { MediumText } from "./styled/Text";
 import { useSourceContext } from "../context/SourceContext";
 import AddButton from "./buttons/AddButton";
+import React from "react";
+
 const BenchMarkSource: React.FC = () => {
   const { sources, dispatch } = useSourceContext();
 
@@ -32,4 +34,4 @@ const BenchMarkSource: React.FC = () => {
   );
 };
 
-export default BenchMarkSource;
+export default React.memo(BenchMarkSource);
