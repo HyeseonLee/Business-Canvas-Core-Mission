@@ -6,10 +6,13 @@ import { usePreviewContext } from "../context/PreviewContext";
 import MarkDown from "react-markdown";
 import UrlButton from "./buttons/UrlButton";
 import { BenchMarkInfo } from "../types/benchmark";
+import React from "react";
+
 type BenchMarkPreviewProps = {
   previewData: BenchMarkInfo;
 };
 const BenchMarkPreview: React.FC<BenchMarkPreviewProps> = ({ previewData }) => {
+  console.log("Preview rendered");
   return (
     <OuterContainer flexbasis="45%">
       <LargeText>
@@ -89,4 +92,4 @@ const BenchMarkPreview: React.FC<BenchMarkPreviewProps> = ({ previewData }) => {
     </OuterContainer>
   );
 };
-export default BenchMarkPreview;
+export default React.memo(BenchMarkPreview);
