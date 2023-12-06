@@ -14,6 +14,17 @@ export function useLocalStorage({
 }: UseLocalStorage) {
   const { sources } = useSourceContext();
 
+  const defaultInfoRef = useRef(defaultInfo);
+  const sourcesRef = useRef(sources);
+
+  useEffect(() => {
+    defaultInfoRef.current = defaultInfo;
+  }, [defaultInfo]);
+
+  useEffect(() => {
+    sourcesRef.current = sources;
+  }, [sources]);
+
   function isValidUrl(url: string) {
     if (url && url.trim() !== "") {
       try {
@@ -28,8 +39,8 @@ export function useLocalStorage({
   const saveBenchMarkToLocalStorage = useCallback(async () => {
     console.log("saveBenchMarkToLocalStorage 함수 생겼다");
     const combinedBenchMarkInfo = {
-      ...defaultInfo,
-      sources: sources,
+      ...defaultInfoRef.current,
+      sources: sourcesRef.current,
     };
 
     const isValidSourceUrl: boolean = sources.every((source) =>
@@ -43,7 +54,7 @@ export function useLocalStorage({
     } else {
       alert("유효하지 않은 URL 형식이 존재합니다. 확인해주세요.");
     }
-  }, [defaultInfo, sources]);
+  }, []);
 
   async function updateBenchMarkPreview() {
     const benchMarkInfo = await localforage.getItem("benchMark");
