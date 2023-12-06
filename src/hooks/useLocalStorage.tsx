@@ -37,7 +37,6 @@ export function useLocalStorage({
   }
 
   const saveBenchMarkToLocalStorage = useCallback(async () => {
-    console.log("saveBenchMarkToLocalStorage 함수 생겼다");
     const combinedBenchMarkInfo = {
       ...defaultInfoRef.current,
       sources: sourcesRef.current,

@@ -2,7 +2,6 @@ import { LargeText, MediumText } from "./styled/Text";
 import { Flex } from "antd";
 import { BookTwoTone } from "@ant-design/icons";
 import { OuterContainer } from "./styled/Container";
-import { usePreviewContext } from "../context/PreviewContext";
 import MarkDown from "react-markdown";
 import UrlButton from "./buttons/UrlButton";
 import { BenchMarkInfo } from "../types/benchmark";
@@ -12,7 +11,6 @@ type BenchMarkPreviewProps = {
   previewData: BenchMarkInfo;
 };
 const BenchMarkPreview: React.FC<BenchMarkPreviewProps> = ({ previewData }) => {
-  console.log("Preview rendered");
   return (
     <OuterContainer flexbasis="45%">
       <LargeText>

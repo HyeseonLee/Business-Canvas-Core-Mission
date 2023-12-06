@@ -41,7 +41,6 @@ const BenchMarkForm: React.FC<BenchMarkFormProps> = ({ setPreviewData }) => {
     fetchDefaultInfo();
   }, []);
 
-  console.log("Form rendered");
   return (
     <OuterContainer flexbasis="55%">
       <LargeText>Benchmark</LargeText>
