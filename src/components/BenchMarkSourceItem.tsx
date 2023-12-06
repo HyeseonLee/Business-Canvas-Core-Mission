@@ -4,6 +4,7 @@ import LabeledInput from "./inputs/LabeledInput";
 import { useSourceContext } from "../context/SourceContext";
 import BenchMarkData from "./BenchMarkData";
 import AddButton from "./buttons/AddButton";
+import { useCallback } from "react";
 
 type SourceItemProps = {
   source: Source;
@@ -11,13 +12,33 @@ type SourceItemProps = {
 
 const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
   const { dispatch } = useSourceContext();
-  const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) =>
-    dispatch({
-      type: "CHANGE_SOURCE",
-      id: source.id,
-      name: e.target.name,
-      value: e.target.value,
-    });
+
+  const handleChangeSource = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) =>
+      dispatch({
+        type: "CHANGE_SOURCE",
+        id: source.id,
+        name: e.target.name,
+        value: e.target.value,
+      }),
+    []
+  );
+  const deleteButtonOnClick = useCallback(
+    () =>
+      dispatch({
+        type: "DELETE_SOURCE",
+        id: source.id,
+      }),
+    []
+  );
+  const addButtonOnClick = useCallback(
+    () =>
+      dispatch({
+        type: "ADD_DATA",
+        sourceId: source.id,
+      }),
+    []
+  );
 
   return (
     <div
@@ -31,14 +52,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
       }}
     >
       <div style={{ marginBottom: "20px" }}>
-        <DeleteButton
-          onClick={() =>
-            dispatch({
-              type: "DELETE_SOURCE",
-              id: source.id,
-            })
-          }
-        />
+        <DeleteButton onClick={deleteButtonOnClick} />
         <LabeledInput
           label="제목"
           name="title"
@@ -60,15 +74,7 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
           <BenchMarkData key={data.id} sourceId={source.id} data={data} />
         ))}
 
-      <AddButton
-        text="벤치마크 데이터 추가하기"
-        onClick={() =>
-          dispatch({
-            type: "ADD_DATA",
-            sourceId: source.id,
-          })
-        }
-      />
+      <AddButton text="벤치마크 데이터 추가하기" onClick={addButtonOnClick} />
     </div>
   );
 };

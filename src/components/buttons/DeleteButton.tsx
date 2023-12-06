@@ -1,6 +1,7 @@
 import { MinusOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider } from "antd";
 import { MediumText } from "../styled/Text";
+import React from "react";
 
 type Props = {
   onClick: () => void;
@@ -35,4 +36,4 @@ const DeleteButton = ({ onClick }: Props): JSX.Element => {
   );
 };
 
-export default DeleteButton;
+export default React.memo(DeleteButton);
