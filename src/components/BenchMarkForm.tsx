@@ -4,7 +4,7 @@ import LabeledInput from "./inputs/LabeledInput";
 import SaveButton from "./buttons/SaveButton";
 import { OuterContainer } from "./styled/Container";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { readDefaultInfoFromLocalStorage } from "../utils/readLocalStorage";
 import { DefaultInfo, BenchMarkInfo } from "../types/benchmark";
 
@@ -22,12 +22,15 @@ const BenchMarkForm: React.FC<BenchMarkFormProps> = ({ setPreviewData }) => {
     setPreviewData,
   });
 
-  function handleChangeDefaultInfo(e: React.ChangeEvent<HTMLInputElement>) {
-    setDefaultInfo({
-      ...defaultInfo,
-      [e.target.name]: e.target.value,
-    });
-  }
+  const handleChangeDefaultInfo = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDefaultInfo((prevDefaultInfo) => ({
+        ...prevDefaultInfo,
+        [e.target.name]: e.target.value,
+      }));
+    },
+    []
+  );
 
   useEffect(() => {
     const fetchDefaultInfo = async () => {
@@ -37,6 +40,8 @@ const BenchMarkForm: React.FC<BenchMarkFormProps> = ({ setPreviewData }) => {
 
     fetchDefaultInfo();
   }, []);
+
+  console.log("Form rendered");
   return (
     <OuterContainer flexbasis="55%">
       <LargeText>Benchmark</LargeText>
