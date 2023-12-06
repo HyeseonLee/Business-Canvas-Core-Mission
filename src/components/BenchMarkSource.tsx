@@ -2,10 +2,15 @@ import BenchMarkSourceItem from "./BenchMarkSourceItem";
 import { MediumText } from "./styled/Text";
 import { useSourceContext } from "../context/SourceContext";
 import AddButton from "./buttons/AddButton";
-import React from "react";
+import React, { useCallback } from "react";
 
 const BenchMarkSource: React.FC = () => {
   const { sources, dispatch } = useSourceContext();
+  const addButtonOnClick = useCallback(() => {
+    dispatch({
+      type: "ADD_SOURCE",
+    });
+  }, []);
 
   return (
     <div
@@ -22,14 +27,7 @@ const BenchMarkSource: React.FC = () => {
           <BenchMarkSourceItem key={source.id} source={source} />
         ))}
 
-      <AddButton
-        text="벤치마크 출처 추가하기"
-        onClick={() =>
-          dispatch({
-            type: "ADD_SOURCE",
-          })
-        }
-      />
+      <AddButton text="벤치마크 출처 추가하기" onClick={addButtonOnClick} />
     </div>
   );
 };

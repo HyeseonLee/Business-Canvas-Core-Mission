@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { MediumText } from "../styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
+import React from "react";
 
 type Props = {
   onClick: () => void;
@@ -18,4 +19,4 @@ const AddButton = ({ onClick, text }: Props): JSX.Element => {
   );
 };
 
-export default AddButton;
+export default React.memo(AddButton);
