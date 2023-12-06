@@ -2,6 +2,8 @@ import { useSourceContext } from "../context/SourceContext";
 import localforage from "localforage";
 import { BenchMarkInfo } from "../types/benchmark";
 import { DefaultInfo } from "../types/benchmark";
+import { useCallback, useEffect, useRef } from "react";
+
 export type UseLocalStorage = {
   defaultInfo: DefaultInfo;
   setPreviewData: React.Dispatch<React.SetStateAction<BenchMarkInfo>>;
@@ -22,8 +24,13 @@ export function useLocalStorage({
     }
     return true;
   }
-  async function saveBenchMarkToLocalStorage() {
-    const combinedBenchMarkInfo = { ...defaultInfo, sources: sources };
+
+  const saveBenchMarkToLocalStorage = useCallback(async () => {
+    console.log("saveBenchMarkToLocalStorage 함수 생겼다");
+    const combinedBenchMarkInfo = {
+      ...defaultInfo,
+      sources: sources,
+    };
 
     const isValidSourceUrl: boolean = sources.every((source) =>
       isValidUrl(source.url)
@@ -36,7 +43,7 @@ export function useLocalStorage({
     } else {
       alert("유효하지 않은 URL 형식이 존재합니다. 확인해주세요.");
     }
-  }
+  }, [defaultInfo, sources]);
 
   async function updateBenchMarkPreview() {
     const benchMarkInfo = await localforage.getItem("benchMark");
@@ -53,6 +60,5 @@ export function useLocalStorage({
 
   return {
     saveBenchMarkToLocalStorage,
-    updateBenchMarkPreview,
   };
 }
