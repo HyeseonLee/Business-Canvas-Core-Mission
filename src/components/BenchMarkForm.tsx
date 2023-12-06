@@ -2,8 +2,6 @@ import { LargeText } from "./styled/Text";
 import BenchMarkSource from "./BenchMarkSource";
 import LabeledInput from "./inputs/LabeledInput";
 import SaveButton from "./buttons/SaveButton";
-
-import { useDefaultInfoContext } from "../context/DefaultInfoContext";
 import { OuterContainer } from "./styled/Container";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";

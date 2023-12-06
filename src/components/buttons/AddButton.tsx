@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { MediumText } from "../styled/Text";
 import { PlusOutlined } from "@ant-design/icons";
+
 type Props = {
   onClick: () => void;
   text: string;

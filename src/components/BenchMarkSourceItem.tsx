@@ -39,7 +39,6 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
             })
           }
         />
-        {/* <DeleteButton sourceId={source.id} target="source" /> */}
         <LabeledInput
           label="제목"
           name="title"

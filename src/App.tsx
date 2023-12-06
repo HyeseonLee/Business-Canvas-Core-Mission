@@ -52,6 +52,7 @@ function App() {
     () => ({ sources, dispatch }),
     [sources, dispatch]
   );
+
   return (
     <SourceContext.Provider value={sourceContextValue}>
       <div className="App">
