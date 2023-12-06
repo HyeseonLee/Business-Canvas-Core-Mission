@@ -20,7 +20,15 @@ const BenchMarkData: React.FC<BenchMarkDataProps> = ({ sourceId, data }) => {
         backgroundColor: "var(--colorBgContainerDisabled)",
       }}
     >
-      <DeleteButton target="data" sourceId={sourceId} dataId={data.id} />
+      <DeleteButton
+        onClick={() =>
+          dispatch({
+            type: "DELETE_DATA",
+            sourceId,
+            dataId: data.id,
+          })
+        }
+      />
 
       <MediumText fontWeight={600}>벤치마크 데이터</MediumText>
 

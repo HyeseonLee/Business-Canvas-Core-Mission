@@ -6,10 +6,23 @@ import SaveButton from "./buttons/SaveButton";
 import { useDefaultInfoContext } from "../context/DefaultInfoContext";
 import { OuterContainer } from "./styled/Container";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useEffect, useState } from "react";
+import { readDefaultInfoFromLocalStorage } from "../utils/readLocalStorage";
+import { DefaultInfo, BenchMarkInfo } from "../types/benchmark";
 
-const BenchMarkForm: React.FC = () => {
-  const { defaultInfo, setDefaultInfo } = useDefaultInfoContext();
-  const { saveBenchMarkToLocalStorage } = useLocalStorage();
+type BenchMarkFormProps = {
+  setPreviewData: React.Dispatch<React.SetStateAction<BenchMarkInfo>>;
+};
+const BenchMarkForm: React.FC<BenchMarkFormProps> = ({ setPreviewData }) => {
+  const [defaultInfo, setDefaultInfo] = useState<DefaultInfo>({
+    title: "",
+    description: "",
+  });
+
+  const { saveBenchMarkToLocalStorage } = useLocalStorage({
+    defaultInfo,
+    setPreviewData,
+  });
 
   function handleChangeDefaultInfo(e: React.ChangeEvent<HTMLInputElement>) {
     setDefaultInfo({
@@ -18,6 +31,14 @@ const BenchMarkForm: React.FC = () => {
     });
   }
 
+  useEffect(() => {
+    const fetchDefaultInfo = async () => {
+      const response = await readDefaultInfoFromLocalStorage();
+      setDefaultInfo(response);
+    };
+
+    fetchDefaultInfo();
+  }, []);
   return (
     <OuterContainer flexbasis="55%">
       <LargeText>Benchmark</LargeText>

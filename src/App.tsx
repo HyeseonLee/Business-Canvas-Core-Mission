@@ -3,14 +3,11 @@ import { useReducer, useState, useEffect } from "react";
 import { SourceContext } from "./context/SourceContext";
 import sourceReducer from "./reducers/sourceReducer";
 import BenchMarkForm from "./components/BenchMarkForm";
-import { DefaultInfoContext } from "./context/DefaultInfoContext";
-import { BenchMarkInfo, DefaultInfo } from "./types/benchmark";
+import { BenchMarkInfo } from "./types/benchmark";
 import BenchMarkPreview from "./components/BenchMarkPreview";
 import { PageContainer } from "./components/styled/Container";
 import { v4 as uuidv4 } from "uuid";
-import { PreviewContext } from "./context/PreviewContext";
 import {
-  readDefaultInfoFromLocalStorage,
   readPreviewDataFromLocalStorage,
   readSourceFromLocalStorage,
 } from "./utils/readLocalStorage";
@@ -29,10 +26,6 @@ function App() {
       ],
     },
   ]);
-  const [defaultInfo, setDefaultInfo] = useState<DefaultInfo>({
-    title: "",
-    description: "",
-  });
 
   const [previewData, setPreviewData] = useState<BenchMarkInfo>({
     title: "",
@@ -46,38 +39,29 @@ function App() {
       dispatch({ type: "INIT_SOURCES", sources: response });
     };
 
-    const fetchDefaultInfo = async () => {
-      const response = await readDefaultInfoFromLocalStorage();
-      setDefaultInfo(response);
-    };
-
     const fetchPreviewData = async () => {
       const response = await readPreviewDataFromLocalStorage();
       setPreviewData(response);
     };
+
     fetchSources();
-    fetchDefaultInfo();
     fetchPreviewData();
   }, []);
   return (
-    <DefaultInfoContext.Provider value={{ defaultInfo, setDefaultInfo }}>
-      <SourceContext.Provider value={{ sources, dispatch }}>
-        <PreviewContext.Provider value={{ previewData, setPreviewData }}>
-          <div className="App">
-            <PageContainer>
-              <BenchMarkForm />
-              <div
-                style={{
-                  borderLeft: "1px solid rgba(0,0,0,0.1)",
-                  margin: "0px 10px",
-                }}
-              ></div>
-              <BenchMarkPreview />
-            </PageContainer>
-          </div>
-        </PreviewContext.Provider>
-      </SourceContext.Provider>
-    </DefaultInfoContext.Provider>
+    <SourceContext.Provider value={{ sources, dispatch }}>
+      <div className="App">
+        <PageContainer>
+          <BenchMarkForm setPreviewData={setPreviewData} />
+          <div
+            style={{
+              borderLeft: "1px solid rgba(0,0,0,0.1)",
+              margin: "0px 10px",
+            }}
+          ></div>
+          <BenchMarkPreview previewData={previewData} />
+        </PageContainer>
+      </div>
+    </SourceContext.Provider>
   );
 }
 

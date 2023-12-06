@@ -31,8 +31,15 @@ const BenchMarkSourceItem: React.FC<SourceItemProps> = ({ source }) => {
       }}
     >
       <div style={{ marginBottom: "20px" }}>
-        <DeleteButton sourceId={source.id} target="source" />
-
+        <DeleteButton
+          onClick={() =>
+            dispatch({
+              type: "DELETE_SOURCE",
+              id: source.id,
+            })
+          }
+        />
+        {/* <DeleteButton sourceId={source.id} target="source" /> */}
         <LabeledInput
           label="제목"
           name="title"

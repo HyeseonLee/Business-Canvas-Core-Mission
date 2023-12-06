@@ -1,12 +1,15 @@
-import { useDefaultInfoContext } from "../context/DefaultInfoContext";
-import { usePreviewContext } from "../context/PreviewContext";
 import { useSourceContext } from "../context/SourceContext";
 import localforage from "localforage";
 import { BenchMarkInfo } from "../types/benchmark";
-
-export function useLocalStorage() {
-  const { defaultInfo } = useDefaultInfoContext();
-  const { setPreviewData } = usePreviewContext();
+import { DefaultInfo } from "../types/benchmark";
+export type UseLocalStorage = {
+  defaultInfo: DefaultInfo;
+  setPreviewData: React.Dispatch<React.SetStateAction<BenchMarkInfo>>;
+};
+export function useLocalStorage({
+  defaultInfo,
+  setPreviewData,
+}: UseLocalStorage) {
   const { sources } = useSourceContext();
 
   function isValidUrl(url: string) {

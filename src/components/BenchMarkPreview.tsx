@@ -5,10 +5,11 @@ import { OuterContainer } from "./styled/Container";
 import { usePreviewContext } from "../context/PreviewContext";
 import MarkDown from "react-markdown";
 import UrlButton from "./buttons/UrlButton";
-
-const BenchMarkPreview: React.FC = () => {
-  const { previewData } = usePreviewContext();
-
+import { BenchMarkInfo } from "../types/benchmark";
+type BenchMarkPreviewProps = {
+  previewData: BenchMarkInfo;
+};
+const BenchMarkPreview: React.FC<BenchMarkPreviewProps> = ({ previewData }) => {
   return (
     <OuterContainer flexbasis="45%">
       <LargeText>
