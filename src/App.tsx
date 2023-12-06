@@ -1,5 +1,5 @@
 import "./App.css";
-import { useReducer, useState, useEffect } from "react";
+import { useReducer, useState, useEffect, useMemo } from "react";
 import { SourceContext } from "./context/SourceContext";
 import sourceReducer from "./reducers/sourceReducer";
 import BenchMarkForm from "./components/BenchMarkForm";
@@ -47,8 +47,13 @@ function App() {
     fetchSources();
     fetchPreviewData();
   }, []);
+
+  const sourceContextValue = useMemo(
+    () => ({ sources, dispatch }),
+    [sources, dispatch]
+  );
   return (
-    <SourceContext.Provider value={{ sources, dispatch }}>
+    <SourceContext.Provider value={sourceContextValue}>
       <div className="App">
         <PageContainer>
           <BenchMarkForm setPreviewData={setPreviewData} />
